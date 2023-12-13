@@ -53,21 +53,13 @@ class _ActivityScreenState extends State<ActivityScreen> {
             ],
           ),
         ),
-        body: const TabBarView(
+        body: TabBarView(
           children: [
-            AllListTile(),
-            Center(
-              child: Text('Recipes'),
-            ),
-            Center(
-              child: Text('Mentions'),
-            ),
-            Center(
-              child: Text('Follows'),
-            ),
-            Center(
-              child: Text('Likes'),
-            ),
+            const AllListTile(),
+            for (var tab in _tabs.skip(1))
+              Center(
+                child: Text(tab),
+              )
           ],
         ),
       ),
