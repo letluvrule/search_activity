@@ -17,6 +17,13 @@ class XScreen extends StatelessWidget {
         splashColor: Colors.transparent,
         highlightColor: Colors.transparent,
         hoverColor: Colors.transparent,
+        scrollbarTheme: ScrollbarThemeData(
+          mainAxisMargin: 150,
+          thumbVisibility: MaterialStateProperty.all(true),
+          thumbColor: MaterialStateProperty.all(
+            const Color.fromRGBO(0, 0, 0, 0.3),
+          ),
+        ),
         appBarTheme: const AppBarTheme(
           backgroundColor: Colors.white,
           elevation: 0,
