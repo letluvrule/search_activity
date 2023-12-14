@@ -84,15 +84,28 @@ class _SearchScreenState extends State<SearchScreen> {
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
-          /**
+/**
  * 1. ListView는 이미 스크롤 기능을 제공하므로 
  * SingleChildScrollView를 제거하고 `ListView`만 유지합니다.
  * 2. 둘 다 필요한 경우 `ListView`에 `shrinkWrap: true`
  * `physics: NeverScrollableScrollPhysics()`를 설정하여 
  * 자체 스크롤을 비활성화하고 그 용도로 `SingleChildScrollView`에 의존
- * */
-          child: Scrollbar(
+ */
+
+/**
+ * ScrollThemeData는 iOS에서 안정적 X
+ * 따라서 RawScrollbar를 사용해야 함
+ */
+          child: RawScrollbar(
             controller: _scrollController,
+            timeToFade: const Duration(milliseconds: 3000),
+            fadeDuration: const Duration(milliseconds: 2000),
+            mainAxisMargin: 200,
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(8)),
+            ),
+            thumbColor: Theme.of(context).primaryColor,
+            thickness: 8,
             child: SingleChildScrollView(
               controller: _scrollController,
               child: Column(
